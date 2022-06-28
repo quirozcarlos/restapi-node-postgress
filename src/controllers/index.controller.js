@@ -21,25 +21,19 @@ const pool = new Pool({
 const createUser = async (req, res) => {
   const { id_country, gender, birthday, name, lastname, nickname, email } = req.body
 
-  if (!id_country) {
-    res.status(400).json('id_country is required')
-    return
-  }
-
   try {
     const response = await pool.query(
       INSERT_WITH_FK,
       [id_country, gender, birthday, name, lastname, nickname, email]
     )
-    console.log(response);
     res.json({
       message: 'User added succesfully',
       body: {
         user: { id_country, gender, birthday, name, lastname, nickname, email }
       }
     });
-  } catch {
-    res.status(400);
+  } catch (error) {
+    res.status(400).json(error.message);
   }
 }
 
@@ -56,8 +50,8 @@ const createItem = async (req, res) => {
         item: { name, price, offer }
       }
     });
-  } catch {
-    res.status(400);
+  } catch (error) {
+    res.status(400).json(error.message);
   }
 }
 
@@ -67,8 +61,8 @@ const updateDevice = async (req, res) => {
   try {
     const response = await pool.query(UPDATE_WITH_FK, [name, id])
     res.json('Device updated succesfully');
-  } catch {
-    res.status(400);
+  } catch (error) {
+    res.status(400).json(error.message);
   }
 }
 
@@ -78,8 +72,8 @@ const updateOs = async (req, res) => {
   try {
     const response = await pool.query(UPDATE_WITHOUT_FK, [name, id])
     res.json('OS updated succesfully');
-  } catch {
-    res.status(400);
+  } catch (error) {
+    res.status(400).json(error.message);
   }
 }
 
@@ -87,8 +81,8 @@ const getItems = async (req, res) => {
   try {
     const response = await pool.query(GET_ONE_TABLE)
     res.status(200).json(response.rows);
-  } catch {
-    res.status(400);
+  } catch (error) {
+    res.status(400).json(error.message);
   }
 }
 
@@ -96,8 +90,8 @@ const getOsName = async (req, res) => {
   try {
     const response = await pool.query(GET_MORE_THAN_A_TABLE)
     res.status(200).json(response.rows);
-  } catch {
-    res.status(400);
+  } catch (error) {
+    res.status(400).json(error.message);
   }
 }
 
@@ -105,8 +99,8 @@ const getRepeatedItems = async (req, res) => {
   try {
     const response = await pool.query(GET_GROUP_ONE_TABLE)
     res.status(200).json(response.rows);
-  } catch {
-    res.status(400);
+  } catch (error) {
+    res.status(400).json(error.message);
   }
 }
 
@@ -114,8 +108,8 @@ const getDevicesMostUsed = async (req, res) => {
   try {
     const response = await pool.query(GET_GROUP_MORE_THAN_A_TABLE)
     res.status(200).json(response.rows);
-  } catch {
-    res.status(400);
+  } catch (error) {
+    res.status(400).json(error.message);
   }
 }
 
