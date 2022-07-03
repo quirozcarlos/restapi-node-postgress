@@ -4,12 +4,12 @@ const router = Router()
 const {
   createItem,
   createUser,
-  updateDevice,
+  updateUser,
   updateOs,
   getItems,
-  getOsName,
-  getRepeatedItems,
-  getDevicesMostUsed
+  getCountryWithUser,
+  getItemsGroupBy,
+  getCountryWithUserGrouped
 } = require('../controllers/index.controller')
 
 /**
@@ -25,7 +25,7 @@ router.post('/user', createUser)
 /**
  * Actualizar un objeto con FK.
  */
-router.put('/device/:id', updateDevice)
+router.put('/user/:id', updateUser)
 
 /**
  * Actualizar un objeto sin FK.
@@ -40,16 +40,16 @@ router.get('/items', getItems)
 /**
  * Consulta de mas de una tabla.
  */
-router.get('/osname', getOsName)
+router.get('/countrywithuser', getCountryWithUser)
 
 /**
  * Consulta utilizando agrupación una sola tabla.
  */
-router.get('/repeateditems', getRepeatedItems)
+router.get('/getItemsGroupBy', getItemsGroupBy)
 
 /**
  * Consulta utilizando agrupacion varias tablas.
  */
-router.get('/devicesmostused', getDevicesMostUsed)
+router.get('/countrywithusergrouped', getCountryWithUserGrouped)
 
 module.exports = router

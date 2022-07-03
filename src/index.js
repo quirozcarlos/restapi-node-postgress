@@ -1,9 +1,12 @@
 const express = require('express')
+const bodyParser = require('body-parser')
 const app = express()
 
-// middlewares (funciones que se ejecutan antes de entrar a las rutas)
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
+// // parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
 
 // routes
 app.use(require('./routes/index'))

@@ -1,10 +1,10 @@
 {
   "INSERT_WITH_FK": "INSERT INTO users (id_country, gender, birthday, name, lastname, nickname, email) VALUES ($1, $2, $3, $4, $5, $6, $7)",
   "INSERT_WITHOUT_FK": "INSERT INTO items (name, price, offer) values ($1, $2, $3)",
-  "UPDATE_WITH_FK": "UPDATE devices SET name = $1 WHERE id = $2",
+  "UPDATE_WITH_FK": "",
   "UPDATE_WITHOUT_FK": "UPDATE os SET name = $1 WHERE id = $2",
   "GET_ONE_TABLE": "SELECT * FROM items",
-  "GET_MORE_THAN_A_TABLE": "SELECT os.name FROM sessions JOIN devices ON sessions.id_devices = devices.id JOIN os ON devices.id_os = os.id",
+  "GET_MORE_THAN_A_TABLE": "SELECT * FROM users JOIN countries on users.id_country = countries.id",
   "GET_GROUP_ONE_TABLE": "SELECT name, count(*) FROM items WHERE name ILIKE 'a%' GROUP BY name",
-  "GET_GROUP_MORE_THAN_A_TABLE": "SELECT devices.name as \"Device most used\", count(*) FROM sessions JOIN devices ON sessions.id_devices = devices.id GROUP BY devices.id ORDER BY count(sessions.id_devices) DESC"
+  "GET_GROUP_MORE_THAN_A_TABLE": "SELECT countries.*, users.*  FROM users JOIN countries ON users.id_country = countries.id GROUP BY countries.name, countries.id, users.id"
 }
