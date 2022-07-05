@@ -4,7 +4,7 @@
   "UPDATE_WITH_FK": "",
   "UPDATE_WITHOUT_FK": "UPDATE os SET name = $1 WHERE id = $2",
   "GET_ONE_TABLE": "SELECT * FROM items",
-  "GET_MORE_THAN_A_TABLE": "SELECT * FROM users JOIN countries on users.id_country = countries.id",
+  "GET_MORE_THAN_A_TABLE": "SELECT countries.name FROM users JOIN countries on users.id_country = countries.id",
   "GET_GROUP_ONE_TABLE": "SELECT name, count(*) FROM items WHERE name ILIKE 'a%' GROUP BY name",
   "GET_GROUP_MORE_THAN_A_TABLE": "SELECT countries.*, users.*  FROM users JOIN countries ON users.id_country = countries.id GROUP BY countries.name, countries.id, users.id"
 }
